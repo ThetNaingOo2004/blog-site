@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gpy.css">
+</head>
+<body>
+    <!-- Include the Navbar Component -->
+    <div id="navbar-container"></div>
+
+    <div class="form-container">
+        <h2>Blog</h2>
+        <form id="contact-form" method="">
+            <div class="form-group">
+                <label for="name">Title:</label>
+                <input type="text" id="name" name="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="message">Content</label>
+                <textarea id="message" name="content" rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn-post">Submit</button>
+        </form>
+    </div>
+
+
+
+    <!-- Include the Footer Component -->
+    <div id="footer-container"></div>
+
+    <script>
+        /////////////// Navbar & Footer //
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Load the Navbar Component
+    fetchComponent("./navbar.html", "navbar-container");
+
+    // Load the Footer Component
+    fetchComponent("./footer.html", "footer-container");
+});
+
+function fetchComponent(url, containerId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(containerId).innerHTML = data;
+        })
+        .catch(error => {
+            console.error(`Error fetching component: ${error}`);
+        });
+}
+    </script>
+    <script src="Add.js"></script>
+</body>
+</html>
